@@ -87,7 +87,7 @@ exports.updateStore = async (req, res) => {
 };
 
 exports.getStoreBySlug = async (req, res, next) => {
-  const store = await Store.findOne({slug: req.params.slug});
+  const store = await Store.findOne({slug: req.params.slug}).populate('author reviews');
   if(!store) {
     return next();
   }
@@ -140,7 +140,7 @@ exports.mapStores = async (req, res) => {
 };
 
 exports.mapPage = async (req, res) => {
-  res.render('map', { title: 'Map' });
+  res.render("map", { title: "Map 🗺️" });
 };
 
 exports.heartStores = async (req, res) => {
@@ -159,5 +159,10 @@ exports.getHearts = async (req, res) => {
   const stores = await Store.find({
     _id: { $in: req.user.hearts }
   });
-  res.render('stores', { title: 'Hearted Stores', stores });
+  res.render("stores", { title: "Hearted Stores ❤️", stores });
 };
+
+exports.getTopStores = async (req, res) => {
+  const stores = await Store.getTopStores();
+  res.render('topStores', { title: 'Top Stores', stores })
+}
