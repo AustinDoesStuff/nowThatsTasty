@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .inner
+    h2 #{title}
+    .map
+      .autcomplete
+        input.autocomplete__input(type="text" placeholder="Where do you wanna look?" name="geolocate")
+      
+      #map
+        p Loading map...
