@@ -920,8 +920,10 @@ label {
     fill: white; }
   .heart__button--hearted svg {
     fill: red; }
-  .heart__button--float:after {
-    animation: fly 2.5s 1 ease-out; }
+  .heart__button--float {
+    color: red; }
+    .heart__button--float:after {
+      animation: fly 2.5s 1 ease-out; }
 
 @keyframes fly {
   0% {

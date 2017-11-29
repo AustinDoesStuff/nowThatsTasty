@@ -50,6 +50,7 @@ router.post('/account/reset/:token',
 );
 
 router.get('/map', storeConroller.mapPage);
+router.get('/hearts', authController.isLoggedIn, catchErrors(storeConroller.getHearts));
 
 
 
@@ -58,6 +59,8 @@ router.get('/map', storeConroller.mapPage);
 
 router.get('/api/search', catchErrors(storeConroller.searchStores));
 router.get("/api/stores/near", catchErrors(storeConroller.mapStores));
+
+router.post("/api/stores/:id/heart", catchErrors(storeConroller.heartStores));
 
 
 module.exports = router;
